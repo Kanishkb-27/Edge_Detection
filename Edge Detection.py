@@ -40,6 +40,16 @@ def interactive_edge_detection(image_path):
         elif choice=="3":
             laplacian=cv2.Laplacian(gray_image, cv2.CV_64F)
             display_image("Laplacian Edge Detection", np.abs(laplacian).astype(np.uint8))
+        elif choice=="4":
+            print("Adjust kernel size for Gaussian blur (must be odd, default: 5)")
+            kernel_size=int(input("Enter kernel size (odd number): "))
+            blurred=cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
+            display_image("Gaussian Smoothed Image", blurred)
+        elif choice=="5":
+            print("Adjust kernel size for Median filtering (must be odd, default: 5)")
+            kernel_size=int(input("Enter kernel size (must be odd): "))
+            median_filtered=cv2.medianBlur(image, kernel_size)
+            display_image("Median Filtered Image", median_filtered)
         elif choice=="6":
             print("Exiting...")
             break
